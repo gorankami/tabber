@@ -28,7 +28,7 @@ export function KeyListener() {
     if (e.key === "Shift") {
       dispatch(setIsMultipleOn(false));
       if (buffer.find((string) => string !== null)) {
-        addLine(buffer);
+        dispatch(addLine(buffer));
         dispatch(setBuffer(Array(6).fill(null)));
       }
     }
