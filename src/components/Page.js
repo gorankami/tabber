@@ -1,14 +1,18 @@
 import { useDispatch } from "react-redux";
 import FretBoard from "./FretBoard";
 import { KeyListener } from "./KeyListener";
-import Sections from "./Sections";
-import { undo } from "../ducks/data";
+import Tablature from "./Tablature";
+import { completeSection, undo } from "../ducks/data";
 import AppInfo from "./AppInfo";
 export default function Page() {
   const dispatch = useDispatch();
 
   function onUndo() {
     dispatch(undo());
+  }
+
+  function onCompleteSection(){
+    dispatch(completeSection())
   }
 
   return (
@@ -20,7 +24,8 @@ export default function Page() {
       <p>Press BACKSPACE to remove last vertical array</p>
       <FretBoard />
       <button onClick={onUndo}>Backspace</button>
-      <Sections />
+      <button onClick={onCompleteSection}>Complete section</button>
+      <Tablature />
     </>
   );
 }

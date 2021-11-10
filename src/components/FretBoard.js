@@ -14,7 +14,7 @@ export default function FretBoard() {
 
   function onClick(string, fret) {
     const newBuffer = isMultipleOn ? [...buffer] : Array(6).fill(null);
-    newBuffer[string] = fret;
+    newBuffer[string] = fret.toString();
 
     if (isMultipleOn) {
       dispatch(setBuffer(newBuffer));
