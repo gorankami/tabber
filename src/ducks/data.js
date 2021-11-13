@@ -1,19 +1,22 @@
 import { bufferToChord } from "../utils/bufferToChord";
 import { sectionToTab } from "../utils/sectionToTab";
 
-const getDefaultState = () => ({
-  sections: [],
-  buffer: Array(6).fill(null),
-  keyHold: null,
-  isMultipleOn: false,
-  currentSection: [],
-});
 const SET_BUFFER = "data SET_BUFFER";
 const SET_KEY_HOLD = "data SET_KEY_HOLD";
 const SET_IS_MULTIPLE_ON = "data SET_IS_MULTIPLE_ON";
 const UNDO = "data UNDO";
 const ADD_LINE = "data ADD_LINE";
 const COMPLETE_SECTION = "data COMPLETE_SECTION";
+const SET_TITLE = "data SET_TITLE";
+
+const getDefaultState = () => ({
+  sections: [],
+  buffer: Array(6).fill(null),
+  keyHold: null,
+  isMultipleOn: false,
+  currentSection: [],
+  title: "",
+});
 
 export default function data(state = getDefaultState(), { type, payload }) {
   switch (type) {
@@ -54,41 +57,33 @@ export default function data(state = getDefaultState(), { type, payload }) {
         sections: [...state.sections, state.currentSection],
         currentSection: [],
       };
+    case SET_TITLE:
+      return { ...state, title: payload };
     default:
       return state;
   }
 }
 
-export function setBuffer(payload) {
-  return { type: SET_BUFFER, payload };
-}
+// ACTIONS
 
-export function setKeyHold(payload) {
-  return { type: SET_KEY_HOLD, payload };
-}
+export const setBuffer = (payload) => ({ type: SET_BUFFER, payload });
+export const setKeyHold = (payload) => ({ type: SET_KEY_HOLD, payload });
+export const setIsMultipleOn = (payload) => ({
+  type: SET_IS_MULTIPLE_ON,
+  payload,
+});
+export const addLine = (payload) => ({ type: ADD_LINE, payload });
+export const undo = () => ({ type: UNDO });
+export const completeSection = () => ({ type: COMPLETE_SECTION });
+export const setTitle = (payload) => ({ type: SET_TITLE, payload });
 
-export function setIsMultipleOn(payload) {
-  return { type: SET_IS_MULTIPLE_ON, payload };
-}
-
-export function addLine(payload) {
-  return { type: ADD_LINE, payload };
-}
-
-export function undo() {
-  return { type: UNDO };
-}
-
-export function completeSection() {
-  return { type: COMPLETE_SECTION };
-}
+// SELECTORS
 
 export const selectSections = (state) => state.data.sections;
 export const selectPreRows = (state) => state.data.preRows;
 export const selectBuffer = (state) => state.data.buffer;
 export const selectKeyHold = (state) => state.data.keyHold;
 export const selectIsMultipleOn = (state) => state.data.isMultipleOn;
-
-export const selectCurrentSectionForPrint = (state) => {
-  return sectionToTab(state.data.currentSection);
-};
+export const selectCurrentSectionForPrint = (state) =>
+  sectionToTab(state.data.currentSection);
+export const selectTitle = (state) => state.data.title;

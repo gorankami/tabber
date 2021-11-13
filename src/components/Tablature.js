@@ -5,7 +5,7 @@ import {
   selectSections,
 } from "../ducks/data";
 import { sectionToTab } from "../utils/sectionToTab";
-import { strings } from "../utils/strings";
+import { strings } from "../utils/stringsAndNotes";
 
 const sectionSeparator = `|\n|\n|\n|\n|\n|`;
 const tabStyle = { display: "flex", flexWrap: "wrap" };
