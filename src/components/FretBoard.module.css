@@ -1,0 +1,38 @@
+table.FretBoard {
+  border-spacing: 0 2px;
+  user-select: none;
+  text-align: center;
+}
+
+.FretBoard tbody {
+  background-color: gray;
+}
+
+
+.FretBoard td {
+  border-left: 1px solid lightgray;
+  border-right: 1px solid darkgray;
+  background-color: brown;
+  cursor: pointer;
+  color: white;
+}
+
+.FretBoard td:nth-child(1) {
+  background-color: maroon;
+}
+
+.FretBoard tr:nth-child(1) {
+  background-color: white;
+}
+
+.FretBoard td:nth-child(4),
+.FretBoard td:nth-child(6),
+.FretBoard td:nth-child(8),
+.FretBoard td:nth-child(10),
+.FretBoard td:nth-child(13),
+.FretBoard td:nth-child(16),
+.FretBoard td:nth-child(18),
+.FretBoard td:nth-child(20),
+.FretBoard td:nth-child(22) {
+  background-color: maroon;
+}
