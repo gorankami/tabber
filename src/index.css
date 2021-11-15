@@ -1,3 +1,8 @@
-.flex {
-  display: flex;
+html {
+  background-color: lightgray;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }

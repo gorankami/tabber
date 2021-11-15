@@ -2,6 +2,8 @@ table.FretBoard {
   border-spacing: 0 2px;
   user-select: none;
   text-align: center;
+  height: 10em;
+  margin: 0.4em;
 }
 
 .FretBoard tbody {

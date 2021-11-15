@@ -1,0 +1,20 @@
+.Page {
+  display: flex;
+  flex-direction: row;
+}
+
+.untitled {
+  color: gray;
+}
+
+.print {
+  background-color: white;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+@media print {
+  .noPrint {
+    display: none !important;
+  }
+}

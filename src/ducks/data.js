@@ -8,6 +8,7 @@ const UNDO = "data UNDO";
 const ADD_LINE = "data ADD_LINE";
 const COMPLETE_SECTION = "data COMPLETE_SECTION";
 const SET_TITLE = "data SET_TITLE";
+const SET_ARE_NOTE_LABELS_SHOWN = "data SET_ARE_NOTE_LABELS_SHOWN";
 
 const getDefaultState = () => ({
   sections: [],
@@ -16,6 +17,7 @@ const getDefaultState = () => ({
   isMultipleOn: false,
   currentSection: [],
   title: "",
+  areNoteLabelsShown: false,
 });
 
 export default function data(state = getDefaultState(), { type, payload }) {
@@ -59,6 +61,8 @@ export default function data(state = getDefaultState(), { type, payload }) {
       };
     case SET_TITLE:
       return { ...state, title: payload };
+    case SET_ARE_NOTE_LABELS_SHOWN:
+      return { ...state, areNoteLabelsShown: payload };
     default:
       return state;
   }
@@ -76,7 +80,10 @@ export const addLine = (payload) => ({ type: ADD_LINE, payload });
 export const undo = () => ({ type: UNDO });
 export const completeSection = () => ({ type: COMPLETE_SECTION });
 export const setTitle = (payload) => ({ type: SET_TITLE, payload });
-
+export const setAreNoteLabelsShown = (payload) => ({
+  type: SET_ARE_NOTE_LABELS_SHOWN,
+  payload,
+});
 // SELECTORS
 
 export const selectSections = (state) => state.data.sections;
@@ -87,3 +94,5 @@ export const selectIsMultipleOn = (state) => state.data.isMultipleOn;
 export const selectCurrentSectionForPrint = (state) =>
   sectionToTab(state.data.currentSection);
 export const selectTitle = (state) => state.data.title;
+export const selectAreNoteLabelsShown = (state) =>
+  state.data.areNoteLabelsShown;

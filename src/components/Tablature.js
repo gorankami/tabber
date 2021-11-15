@@ -6,16 +6,9 @@ import {
 } from "../ducks/data";
 import { sectionToTab } from "../utils/sectionToTab";
 import { strings } from "../utils/stringsAndNotes";
+import classNames from "./Tablature.module.css"
 
 const sectionSeparator = `|\n|\n|\n|\n|\n|`;
-const tabStyle = { display: "flex", flexWrap: "wrap" };
-const bufferStyle = {
-  marginLeft: "0.2em",
-  color: "orange",
-  fontWeight: "bold",
-  textAlign: "right" ,
-  width: "15px"
-};
 
 export default function Tablature() {
   const buffer = useSelector(selectBuffer);
@@ -23,7 +16,7 @@ export default function Tablature() {
   const sections = useSelector(selectSections);
 
   return (
-    <div style={tabStyle}>
+    <div className={classNames.Tablature}>
       <pre>{strings.join("\n")}</pre>
       <pre>{sectionSeparator}</pre>
       {sections.map((section) => (
@@ -33,7 +26,7 @@ export default function Tablature() {
         </>
       ))}
       <pre>{currentSectionForPrint.join("\n")}</pre>
-      <pre style={bufferStyle}>{buffer.join("\n")}</pre>
+      <pre className={classNames.bufferStyle}>{buffer.join("\n")}</pre>
     </div>
   );
 }

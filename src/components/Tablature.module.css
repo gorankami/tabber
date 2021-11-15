@@ -1,0 +1,12 @@
+.Tablature {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bufferStyle {
+  margin-left: 0.2em;
+  color: orange;
+  font-weight: bold;
+  text-align: right;
+  width: 15px;
+}
