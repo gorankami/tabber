@@ -5,7 +5,7 @@ import {
   selectBuffer,
   selectIsMultipleOn,
   setBuffer,
-} from "../ducks/data";
+} from "../ducks/dataReducer";
 import { getNoteByStringAndFret } from "../utils/getNoteByStringAndFret";
 import { strings } from "../utils/stringsAndNotes";
 import classNames from "./FretBoard.module.css";

@@ -3,7 +3,7 @@ import {
   selectBuffer,
   selectCurrentSectionForPrint,
   selectSections,
-} from "../ducks/data";
+} from "../ducks/dataReducer";
 import { sectionToTab } from "../utils/sectionToTab";
 import { strings } from "../utils/stringsAndNotes";
 import classNames from "./Tablature.module.css"

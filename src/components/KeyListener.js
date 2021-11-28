@@ -5,7 +5,7 @@ import {
   setBuffer,
   setIsMultipleOn,
   undo,
-} from "../ducks/data";
+} from "../ducks/dataReducer";
 
 import { useEventListener } from "../utils/useEventListener";
 

@@ -20,52 +20,50 @@ const getDefaultState = () => ({
   areNoteLabelsShown: false,
 });
 
-export default function data(state = getDefaultState(), { type, payload }) {
-  switch (type) {
-    case SET_BUFFER:
-      return { ...state, buffer: payload };
-    case SET_KEY_HOLD:
-      return { ...state, keyHold: payload };
-    case SET_IS_MULTIPLE_ON:
-      return { ...state, isMultipleOn: payload };
-    case UNDO:
-      let sections = [...state.sections];
-      if (!state.currentSection.length && !sections.length) {
-        return state;
-      }
-      if (state.currentSection.length) {
-        return {
-          ...state,
-          currentSection: state.currentSection.slice(0, -1),
-        };
-      } else {
-        let currentSection = sections.pop();
-        return {
-          ...state,
-          sections,
-          currentSection,
-        };
-      }
-
-    case ADD_LINE:
-      return {
-        ...state,
-        currentSection: [...state.currentSection, bufferToChord(payload)],
-      };
-    case COMPLETE_SECTION:
-      if (!state.currentSection.length) return state;
-      return {
-        ...state,
-        sections: [...state.sections, state.currentSection],
-        currentSection: [],
-      };
-    case SET_TITLE:
-      return { ...state, title: payload };
-    case SET_ARE_NOTE_LABELS_SHOWN:
-      return { ...state, areNoteLabelsShown: payload };
-    default:
+const reducerMap = {
+  [SET_BUFFER]: (state, buffer) => ({ ...state, buffer }),
+  [SET_KEY_HOLD]: (state, keyHold) => ({ ...state, keyHold }),
+  [SET_IS_MULTIPLE_ON]: (state, isMultipleOn) => ({ ...state, isMultipleOn }),
+  [UNDO]: (state) => {
+    let sections = [...state.sections];
+    if (!state.currentSection.length && !sections.length) {
       return state;
-  }
+    }
+    if (state.currentSection.length) {
+      return {
+        ...state,
+        currentSection: state.currentSection.slice(0, -1),
+      };
+    } else {
+      let currentSection = sections.pop();
+      return {
+        ...state,
+        sections,
+        currentSection,
+      };
+    }
+  },
+  [ADD_LINE]: (state, payload) => ({
+    ...state,
+    currentSection: [...state.currentSection, bufferToChord(payload)],
+  }),
+  [COMPLETE_SECTION]: (state) => {
+    if (!state.currentSection.length) return state;
+    return {
+      ...state,
+      sections: [...state.sections, state.currentSection],
+      currentSection: [],
+    };
+  },
+  [SET_TITLE]: (state, title) => ({ ...state, title }),
+  [SET_ARE_NOTE_LABELS_SHOWN]: (state, areNoteLabelsShown) => ({
+    ...state,
+    areNoteLabelsShown,
+  }),
+};
+
+export default function dataReducer(state = getDefaultState(), { type, payload }) {
+  return (reducerMap[type] || ((e) => e))(state, payload);
 }
 
 // ACTIONS
@@ -84,6 +82,7 @@ export const setAreNoteLabelsShown = (payload) => ({
   type: SET_ARE_NOTE_LABELS_SHOWN,
   payload,
 });
+
 // SELECTORS
 
 export const selectSections = (state) => state.data.sections;
