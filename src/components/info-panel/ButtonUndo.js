@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { undo } from "../ducks/dataReducer";
+import { undo } from "../../ducks/dataReducer";
 
 export default function ButtonUndo() {
   const dispatch = useDispatch();

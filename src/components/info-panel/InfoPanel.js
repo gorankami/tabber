@@ -1,5 +1,5 @@
 import classNames from "./InfoPanel.module.css";
-import { a } from "../utils/a";
+import { a } from "../../utils/a";
 import ButtonCompleteSection from "./ButtonCompleteSection";
 import ButtonUndo from "./ButtonUndo";
 import CheckboxNoteVisibilityChange from "./CheckboxNoteVisibilityChange";

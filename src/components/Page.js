@@ -1,7 +1,7 @@
 import FretBoard from "./FretBoard";
 import { KeyListener } from "./KeyListener";
 import Tablature from "./Tablature";
-import { InfoPanel } from "./InfoPanel";
+import { InfoPanel } from "./info-panel/InfoPanel";
 import classNames from "./Page.module.css";
 import InputTitle from "./InputTitle";
 import Title from "./Title";

@@ -30,14 +30,12 @@ export default function FretBoard() {
   return (
     <table className={classNames.FretBoard}>
       <thead>
-        {areNoteLabelsShown && (
-          <tr>
-            {Array.from(Array(25).keys()).map((n) => (
-              <th>{n}</th>
-            ))}
-            <th>Special</th>
-          </tr>
-        )}
+        <tr>
+        {Array.from(Array(25).keys()).map((n) => (
+            <th>{n}</th>
+        ))}
+        <th>Special</th>
+        </tr>
       </thead>
       <tbody>{getFreatBoardTable(onClick, areNoteLabelsShown)}</tbody>
     </table>

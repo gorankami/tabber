@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAreNoteLabelsShown,
   setAreNoteLabelsShown,
-} from "../ducks/dataReducer";
+} from "../../ducks/dataReducer";
 
 export default function CheckboxNoteVisibilityChange() {
   const dispatch = useDispatch();

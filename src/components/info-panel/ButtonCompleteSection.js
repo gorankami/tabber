@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { completeSection } from "../ducks/dataReducer";
+import { completeSection } from "../../ducks/dataReducer";
 
 export default function ButtonCompleteSection() {
   const dispatch = useDispatch();
