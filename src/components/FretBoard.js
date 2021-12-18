@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   addLine,
-  selectAreNoteLabelsShown,
   selectBuffer,
   selectIsMultipleOn,
   setBuffer,
 } from "../ducks/dataReducer";
+import { selectAreNoteLabelsShown } from "../ducks/settingsReducer";
 import { getNoteByStringAndFret } from "../utils/getNoteByStringAndFret";
 import { strings } from "../utils/stringsAndNotes";
 import classNames from "./FretBoard.module.css";

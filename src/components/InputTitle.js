@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectTitle, setTitle } from "../ducks/dataReducer";
+import { selectTitle, setTitle } from "../ducks/settingsReducer";
 import classNames from "./InputTitle.module.css";
 
 export default function TitleInput() {

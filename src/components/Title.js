@@ -1,6 +1,6 @@
 import classNames from "./Page.module.css";
 import { useSelector } from "react-redux";
-import { selectTitle } from "../ducks/dataReducer";
+import { selectTitle } from "../ducks/settingsReducer";
 
 export default function Title() {
   const title = useSelector(selectTitle);
