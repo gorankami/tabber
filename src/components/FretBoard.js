@@ -31,8 +31,8 @@ export default function FretBoard() {
     <table className={classNames.FretBoard}>
       <thead>
         <tr>
-        {Array.from(Array(25).keys()).map((n) => (
-            <th>{n}</th>
+        {Array.from(Array(25).keys()).map((n,i) => (
+            <th key={i}>{n}</th>
         ))}
         <th>Special</th>
         </tr>
